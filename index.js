@@ -1,11 +1,4 @@
 require("dotenv").config();
-const { sendMail } = require("./src/mail");
+const { init } = require("./src/server");
 
-const message = {
-  from: "test@testmail.com",
-  to: "user@testmail.com",
-  subject: "Test Mail From Nodemailer",
-  text: "Hello, This is amazing.",
-};
-
-sendMail(message);
+init(process.env.SERVER_PORT);
