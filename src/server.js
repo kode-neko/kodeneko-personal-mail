@@ -1,10 +1,14 @@
 const express = require("express");
+const morgan = require("morgan");
 const { sendMail } = require("./mail");
 
 const server = express();
 
+server.use(morgan("tiny"));
+server.use(express.json());
 server.post("/contact", (req, res) => {
-  const { name, mail, msg } = req.params;
+
+  const { name, mail, msg } = req.body;
   const message = {
     from: mail,
     to: "destination@testmail.com",
@@ -27,7 +31,7 @@ server.post("/contact", (req, res) => {
     });
 });
 
-server.use(express.json());
+
 
 function init(port) {
   server.listen(port);

@@ -16,8 +16,8 @@ async function sendMail(message) {
     ok = info;
   });
 
-  if (ko) return new Promise.reject(ko);
-  else return new Promise.resolve(ok);
+  if (ko) return Promise.reject(ko);
+  else return Promise.resolve(ok);
 }
 
 module.exports = { sendMail };
